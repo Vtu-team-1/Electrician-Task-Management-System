@@ -1,11 +1,9 @@
-/* ================= GLOBAL ================= */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: #f4f6f9;
 }
 
-/* ================= SIDEBAR ================= */
 .sidebar {
     width: 220px;
     height: 100vh;
@@ -37,19 +35,17 @@ body {
     background: #1abc9c;
 }
 
-/* ================= MAIN CONTENT ================= */
 
 .main {
     margin-left: 220px;
     padding: 25px;
 }
 
-/* ================= HEADINGS ================= */
+
 h2 {
     margin-bottom: 20px;
 }
 
-/* ================= FORM ================= */
 input, select {
     padding: 8px;
     margin: 5px;
@@ -57,7 +53,7 @@ input, select {
     border: 1px solid #ccc;
 }
 
-/* ================= BUTTON ================= */
+
 button {
     padding: 8px 15px;
     background: #3498db;
@@ -72,7 +68,6 @@ button:hover {
     background: #2980b9;
 }
 
-/* ================= TABLE ================= */
 
 table {
     width: 100%;
@@ -96,7 +91,7 @@ td {
     border-bottom: 1px solid #ddd;
 }
 
-/* ================= STATUS BADGES ================= */
+
 .status {
     padding: 5px 12px;
     border-radius: 20px;
@@ -117,7 +112,7 @@ td {
     background: green;
 }
 
-/* ================= CARDS (DASHBOARD) ================= */
+
 .cards {
     display: flex;
     gap: 20px;
@@ -137,19 +132,17 @@ td {
 .green { background: #2ecc71; }
 .red { background: #e74c3c; }
 
-/* ================= PROFILE IMAGE ================= */
+
 .profile-img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
 }
 
-/* ================= FILTER SECTION ================= */
 .filter-box {
     margin-bottom: 15px;
 }
 
-/* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
     .sidebar {
         width: 180px;
@@ -163,14 +156,14 @@ td {
         flex-direction: column;
     }
 }
-/* ===== LOGIN BACKGROUND ===== */
+
 .login-bg {
     background: linear-gradient(135deg, #2c3e50, #3498db);
     height: 100vh;
     margin: 0;
 }
 
-/* ===== CENTER BOX ===== */
+
 .login-container {
     display: flex;
     justify-content: center;
@@ -178,7 +171,7 @@ td {
     height: 100%;
 }
 
-/* ===== LOGIN CARD ===== */
+
 .login-box {
     background: white;
     padding: 35px;
@@ -188,13 +181,13 @@ td {
     box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
 }
 
-/* ===== HEADING ===== */
+
 .login-box h2 {
     margin-bottom: 20px;
     color: #2c3e50;
 }
 
-/* ===== INPUT WITH ICON ===== */
+
 .input-box {
     display: flex;
     align-items: center;
@@ -217,7 +210,7 @@ td {
     padding: 8px;
 }
 
-/* ===== BUTTON ===== */
+
 .login-box button {
     width: 100%;
     padding: 10px;
@@ -233,7 +226,6 @@ td {
     background: #2980b9;
 }
 
-/* ===== ERROR ===== */
 .error {
     color: red;
     font-size: 14px;
