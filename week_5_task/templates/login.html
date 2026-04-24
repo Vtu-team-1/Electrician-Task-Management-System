@@ -3,10 +3,7 @@
 <head>
     <title>Login</title>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="/static/css/style.css">
-
-    <!-- ICONS (Font Awesome) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
@@ -17,7 +14,6 @@
     <div class="login-box">
         <h2><i class="fa-solid fa-user-lock"></i> Login</h2>
 
-        <!-- ERROR MESSAGE -->
         {% with messages = get_flashed_messages() %}
           {% if messages %}
             <p class="error">{{ messages[0] }}</p>
@@ -38,11 +34,8 @@
 
             <button type="submit">Login</button>
         </form>
-
         <br>
-
-
 </div>
-
+    
 </body>
 </html>
