@@ -1,4 +1,3 @@
-// LOGIN FUNCTION
 function loginUser() {
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
@@ -11,13 +10,11 @@ function loginUser() {
     }
 }
 
-// REGISTER FUNCTION
 function registerUser() {
     alert("Registration Successful");
     window.location.href = "login.html";
 }
 
-// ADD MATERIAL
 function addMaterial() {
     var name = document.getElementById("mname").value;
     var qty = document.getElementById("mqty").value;
@@ -36,7 +33,6 @@ function addMaterial() {
     row.insertCell(3).innerHTML = "<button onclick='deleteRow(this)'>Delete</button>";
 }
 
-// DELETE ROW
 function deleteRow(btn) {
     var row = btn.parentNode.parentNode;
     row.remove();
