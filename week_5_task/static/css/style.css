@@ -1,0 +1,240 @@
+/* ================= GLOBAL ================= */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    background: #2c3e50;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+}
+
+.sidebar h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    padding: 12px 15px;
+    margin: 8px 15px;
+    text-decoration: none;
+    background: #34495e;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background: #1abc9c;
+}
+
+/* ================= MAIN CONTENT ================= */
+
+.main {
+    margin-left: 220px;
+    padding: 25px;
+}
+
+/* ================= HEADINGS ================= */
+h2 {
+    margin-bottom: 20px;
+}
+
+/* ================= FORM ================= */
+input, select {
+    padding: 8px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* ================= BUTTON ================= */
+button {
+    padding: 8px 15px;
+    background: #3498db;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #2980b9;
+}
+
+/* ================= TABLE ================= */
+
+table {
+    width: 100%;
+    margin-top: 15px;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    display: table; 
+}
+
+th {
+    background: #2c3e50;
+    color: white;
+    padding: 12px;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+/* ================= STATUS BADGES ================= */
+.status {
+    padding: 5px 12px;
+    border-radius: 20px;
+    color: white;
+    font-size: 12px;
+}
+
+.pending {
+    background: orange;
+}
+
+.progress {
+    background: #007bff;
+    color: white;
+}
+
+.completed {
+    background: green;
+}
+
+/* ================= CARDS (DASHBOARD) ================= */
+.cards {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.card {
+    padding: 20px;
+    color: white;
+    border-radius: 10px;
+    width: 200px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.blue { background: #3498db; }
+.green { background: #2ecc71; }
+.red { background: #e74c3c; }
+
+/* ================= PROFILE IMAGE ================= */
+.profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* ================= FILTER SECTION ================= */
+.filter-box {
+    margin-bottom: 15px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 180px;
+    }
+
+    .content {
+        margin-left: 200px;
+    }
+
+    .cards {
+        flex-direction: column;
+    }
+}
+/* ===== LOGIN BACKGROUND ===== */
+.login-bg {
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    height: 100vh;
+    margin: 0;
+}
+
+/* ===== CENTER BOX ===== */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* ===== LOGIN CARD ===== */
+.login-box {
+    background: white;
+    padding: 35px;
+    border-radius: 12px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+}
+
+/* ===== HEADING ===== */
+.login-box h2 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* ===== INPUT WITH ICON ===== */
+.input-box {
+    display: flex;
+    align-items: center;
+    background: #f1f1f1;
+    padding: 8px;
+    border-radius: 6px;
+    margin: 10px 0;
+}
+
+.input-box i {
+    margin-right: 10px;
+    color: #555;
+}
+
+.input-box input {
+    border: none;
+    outline: none;
+    background: none;
+    width: 100%;
+    padding: 8px;
+}
+
+/* ===== BUTTON ===== */
+.login-box button {
+    width: 100%;
+    padding: 10px;
+    background: #3498db;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.login-box button:hover {
+    background: #2980b9;
+}
+
+/* ===== ERROR ===== */
+.error {
+    color: red;
+    font-size: 14px;
+}
