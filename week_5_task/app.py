@@ -12,7 +12,7 @@ app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "pdf"}
 
 
-# ---------------- DATABASE ----------------
+# ---DATABASE
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(BASE_DIR, "database.db")
 
@@ -22,12 +22,12 @@ def get_db():
     return conn
 
 
-# ---------------- FILE VALIDATION ----------------
+# ---FILE VALIDATION
 def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-# ---------------- CREATE TABLES ----------------
+# ---CREATE TABLES 
 def create_tables():
     conn = get_db()
 
@@ -79,7 +79,7 @@ def create_tables():
     conn.close()
 
 
-# ---------------- SAMPLE DATA ----------------
+# ---SAMPLE DATA
 def insert_sample():
     conn = get_db()
 
@@ -94,7 +94,7 @@ def insert_sample():
     conn.close()
 
 
-# ---------------- LOGIN ----------------
+# ---LOGIN 
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -126,7 +126,7 @@ def logout():
     return redirect("/login")
 
 
-# ---------------- DASHBOARD ----------------
+# ---DASHBOARD
 @app.route("/")
 def dashboard():
     if "user" not in session:
@@ -148,7 +148,7 @@ def dashboard():
     return render_template("dashboard.html", e=e, j=j, t=t, completed=completed, pending=pending)
 
 
-# ---------------- API ----------------
+# ---API
 @app.route("/api/stats")
 def stats():
     if "user" not in session:
@@ -162,7 +162,7 @@ def stats():
     return jsonify({"completed": completed, "pending": pending})
 
 
-# ---------------- ELECTRICIANS ----------------
+# ---ELECTRICIANS 
 @app.route("/electricians", methods=["GET", "POST"])
 def electricians():
     if "user" not in session:
@@ -184,7 +184,7 @@ def electricians():
     return render_template("electricians.html", data=data)
 
 
-# ---------------- JOBS ----------------
+# ---JOBS
 @app.route("/jobs", methods=["GET", "POST"])
 def jobs():
     if "user" not in session:
@@ -217,21 +217,18 @@ def jobs():
     return render_template("jobs.html", data=data, electricians=electricians)
 
 
-# ---------------- TASKS ----------------
+# ---TASKS
 @app.route("/tasks", methods=["GET", "POST"])
 def tasks():
     if "user" not in session:
         return redirect("/login")
 
     conn = get_db()
-
-    # ✅ GET filter value
     status = request.args.get("status")
 
-    # ---------------- POST ACTIONS ----------------
+    # ---POST ACTIONS 
     if request.method == "POST":
 
-        # ➕ ADD TASK
         if "name" in request.form:
             conn.execute("""
                 INSERT INTO tasks(name,job_id,electrician_id,status)
@@ -244,7 +241,7 @@ def tasks():
             ))
             conn.commit()
 
-        # 📄 UPLOAD REPORT
+        # UPLOAD REPORT
         if "report" in request.files:
             f = request.files["report"]
             if f and allowed_file(f.filename):
@@ -255,8 +252,7 @@ def tasks():
                     UPDATE tasks SET report=? WHERE id=?
                 """, (fname, request.form["task_id"]))
                 conn.commit()
-
-        # 💬 ADD COMMENT
+                
         if "comment" in request.form:
             conn.execute("""
                 INSERT INTO comments(task_id, comment)
@@ -266,8 +262,7 @@ def tasks():
                 request.form["comment"]
             ))
             conn.commit()
-
-    # ---------------- FETCH DATA WITH FILTER ----------------
+            
     if session["role"] == "electrician":
 
         if status:
@@ -303,7 +298,6 @@ def tasks():
                 LEFT JOIN electricians ON tasks.electrician_id = electricians.id
             """).fetchall()
 
-    # ---------------- OTHER DATA ----------------
     jobs = conn.execute("SELECT * FROM jobs").fetchall()
     electricians = conn.execute("SELECT * FROM electricians").fetchall()
     comments = conn.execute("SELECT * FROM comments").fetchall()
@@ -315,7 +309,8 @@ def tasks():
                            jobs=jobs,
                            electricians=electricians,
                            comments=comments)
-# ---------------- MATERIALS ----------------
+    
+# ---MATERIALS
 @app.route("/materials", methods=["GET", "POST"])
 def materials():
     if "user" not in session:
@@ -334,7 +329,7 @@ def materials():
     return render_template("materials.html", data=data)
 
 
-# ---------------- REPORTS ----------------
+# ---REPORTS
 @app.route("/reports", methods=["GET", "POST"])
 def reports():
     if "user" not in session:
@@ -366,8 +361,6 @@ def reports():
                            completed=completed,
                            electricians=electricians)
 
-
-# ---------------- UPDATE TASK ----------------
 @app.route("/update_task", methods=["POST"])
 def update_task():
     if "user" not in session:
@@ -380,8 +373,7 @@ def update_task():
 
     return redirect("/tasks")
 
-
-# ---------------- RUN ----------------
+#--Run
 if __name__ == "__main__":
     if not os.path.exists("static/uploads"):
         os.makedirs("static/uploads")
