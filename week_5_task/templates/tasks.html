@@ -5,8 +5,7 @@
 
 <div class="content">
     <h2>📋 Tasks Management</h2>
-
-    <!-- FILTER -->
+    
     <form method="GET" action="/tasks" class="filter-box">
         <select name="status">
             <option value="">All</option>
@@ -16,8 +15,7 @@
         </select>
         <button type="submit">Filter</button>
     </form>
-
-    <!-- ADD TASK (ONLY ADMIN) -->
+    
     {% if session['role'] == 'admin' %}
     <form method="POST">
         <input type="text" name="name" placeholder="Task Name" required>
@@ -46,7 +44,6 @@
     </form>
     {% endif %}
 
-    <!-- TABLE -->
     <table>
         <tr>
             <th>Task</th>
@@ -74,7 +71,6 @@
                 {% endif %}
             </td>
 
-            <!-- ELECTRICIAN CAN UPDATE -->
             <td>
                 {% if session['role'] == 'electrician' %}
                 <form action="/update_task" method="POST">
