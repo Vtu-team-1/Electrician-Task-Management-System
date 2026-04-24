@@ -2,17 +2,14 @@
 
 {% block content %}
 
-
 <div class="content">
     <h2>Jobs</h2>
 
-    <!-- SEARCH -->
     <form method="GET">
         <input type="text" name="search" placeholder="Search Jobs">
         <button>Search</button>
     </form>
 
-    <!-- ADD JOB (FIXED) -->
     <form method="POST" enctype="multipart/form-data">
         <input type="text" name="title" placeholder="Title" required>
         <input type="text" name="location" placeholder="Location" required>
@@ -25,13 +22,10 @@
             {% endfor %}
         </select>
 
-        <!-- 🔥 IMPORTANT FIX -->
         <input type="file" name="image" required>
-
         <button>Add Job</button>
     </form>
 
-    <!-- TABLE -->
     <table>
         <tr>
             <th>Title</th>
@@ -48,7 +42,6 @@
             <td>{{ j.deadline }}</td>
             <td>{{ j.ename }}</td>
 
-            <!-- SHOW IMAGE -->
            <td>
     {% if j.image %}
         <img src="{{ url_for('static', filename='uploads/' + j.image) }}" width="120" height="80" style="object-fit:cover; border-radius:8px;">
