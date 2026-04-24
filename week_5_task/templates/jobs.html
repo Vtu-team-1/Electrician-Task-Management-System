@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="content">
+    <h2>Jobs</h2>
+
+    <!-- SEARCH -->
+    <form method="GET">
+        <input type="text" name="search" placeholder="Search Jobs">
+        <button>Search</button>
+    </form>
+
+    <!-- ADD JOB (FIXED) -->
+    <form method="POST" enctype="multipart/form-data">
+        <input type="text" name="title" placeholder="Title" required>
+        <input type="text" name="location" placeholder="Location" required>
+        <input type="date" name="deadline" required>
+
+        <select name="electrician" required>
+            <option value="">Select Electrician</option>
+            {% for e in electricians %}
+            <option value="{{ e.id }}">{{ e.name }}</option>
+            {% endfor %}
+        </select>
+
+        <!-- 🔥 IMPORTANT FIX -->
+        <input type="file" name="image" required>
+
+        <button>Add Job</button>
+    </form>
+
+    <!-- TABLE -->
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Location</th>
+            <th>Deadline</th>
+            <th>Electrician</th>
+            <th>Image</th>
+        </tr>
+
+        {% for j in data %}
+        <tr>
+            <td>{{ j.title }}</td>
+            <td>{{ j.location }}</td>
+            <td>{{ j.deadline }}</td>
+            <td>{{ j.ename }}</td>
+
+            <!-- SHOW IMAGE -->
+           <td>
+    {% if j.image %}
+        <img src="{{ url_for('static', filename='uploads/' + j.image) }}" width="120" height="80" style="object-fit:cover; border-radius:8px;">
+    {% else %}
+        No Image
+    {% endif %}
+</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+
+</div>
+
+{% endblock %}

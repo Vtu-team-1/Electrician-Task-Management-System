@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>📊 Dashboard</h2>
+
+<div class="cards">
+
+    <div class="card blue">
+        <h3>Total Tasks</h3>
+        <p>{{ t }}</p>
+    </div>
+
+    <div class="card green">
+        <h3>Completed Tasks</h3>
+        <p>{{ completed }}</p>
+    </div>
+
+    <div class="card red">
+        <h3>Total Electricians</h3>
+        <p>{{ e }}</p>
+    </div>
+
+</div>
+
+<h3>Task Statistics</h3>
+<div style="width: 400px; margin: auto;">
+    <canvas id="chart"></canvas>
+</div>
+
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+fetch('/api/stats')
+.then(res => res.json())
+.then(data => {
+    new Chart(document.getElementById('chart'), {
+        type: 'pie',
+        data: {
+            labels: ['Completed', 'Pending'],
+            datasets: [{
+                data: [data.completed, data.pending]
+            }]
+        },
+         options: {
+            responsive: true,
+            maintainAspectRatio: true
+        }
+    });
+});
+</script>
+
+{% endblock %}

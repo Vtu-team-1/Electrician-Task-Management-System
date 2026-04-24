@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ECMS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>ECMS</h2>
+
+    <!-- ✅ Correct route -->
+    <a href="/">🏠 Dashboard</a>
+
+    <!-- 🔐 ROLE-BASED ACCESS -->
+    {% if session['role'] == 'admin' %}
+        <a href="/electricians">👷 Electricians</a>
+        <a href="/jobs">💼 Jobs</a>
+        <a href="/materials">🧱 Materials</a>
+        <a href="/reports">📊 Reports</a>
+    {% endif %}
+
+    <!-- Visible to all -->
+    <a href="/tasks">📋 Tasks</a>
+
+    <!-- Logout -->
+    <a href="/logout">🚪 Logout</a>
+</div>
+
+<div class="main">
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>
